@@ -13,11 +13,9 @@ public class PersonCRUDController extends CRUDController<Person> {
 
     private final CRUDService<Person> personCRUDService;
 
-    @Autowired
     public PersonCRUDController(CRUDService<Person> personCRUDService) {
         this.personCRUDService = personCRUDService;
     }
-
 
     @Override
     public CRUDService<Person> injectEntityService() {

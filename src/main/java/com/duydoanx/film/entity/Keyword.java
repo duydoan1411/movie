@@ -21,6 +21,8 @@ public class Keyword {
     @Column(name = "keyword_name")
     private String keywordName;
 
+
+
     public Keyword(String keywordName) {
         this.keywordName = keywordName;
     }

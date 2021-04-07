@@ -1,6 +1,7 @@
 package com.duydoanx.film.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,6 +31,15 @@ public class Person {
     @JsonBackReference("person-movie-cast")
     @OneToMany(mappedBy = "person")
     private List<MovieCast> movieCasts;
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_director",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    @JsonIgnoreProperties("directors")
+    private List<Movie> movies;
 
     public Person(String personName) {
         this.personName = personName;

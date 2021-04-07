@@ -1,6 +1,7 @@
 package com.duydoanx.film.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,7 +45,7 @@ public class Movie {
     private boolean isTVShow;
 
     @OneToMany(mappedBy = "movie")
-    //@JsonManagedReference("movie-cast")
+    @JsonManagedReference("movie-cast")
     private List<MovieCast> movieCasts;
 
     @OneToMany(mappedBy = "movie")
@@ -59,6 +60,15 @@ public class Movie {
     )
     @JsonIgnoreProperties("movies")
     private List<ProductionCompany> productionCompanies;
+
+    @ManyToMany
+    @JoinTable(
+            name = "movie_director",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
+    @JsonIgnoreProperties("movies")
+    private List<Person> directors;
 
     public Movie(String title, String homepage, String overview, Date releaseDate, Integer runtime,
                  String movieStatus, BigDecimal voteAverage, Integer voteCount, boolean isTVShow) {

@@ -12,7 +12,6 @@ public class PersonCRUDServiceImpl extends CRUDServiceImpl<Person> {
 
     private final PersonRepository personRepository;
 
-    @Autowired
     public PersonCRUDServiceImpl(PersonRepository movieRepository) {
         this.personRepository = movieRepository;
     }

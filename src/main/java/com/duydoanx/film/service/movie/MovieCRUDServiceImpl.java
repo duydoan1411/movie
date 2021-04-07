@@ -12,7 +12,6 @@ public class MovieCRUDServiceImpl extends CRUDServiceImpl<Movie>{
 
     private final MovieRepository movieRepository;
 
-    @Autowired
     public MovieCRUDServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
